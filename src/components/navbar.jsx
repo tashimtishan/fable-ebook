@@ -14,6 +14,7 @@ const navLinks = [
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const pathname = usePathname();
+    if (pathname.startsWith('/dashboard')) return null;
     const { data: session, isPending } = authClient.useSession();
 
     return (
