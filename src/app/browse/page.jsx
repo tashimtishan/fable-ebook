@@ -8,4 +8,4 @@ const BrowseBookspage = () => {
     );
 };
 
-export default BrowseBookspage;<h2>Browse books page</h2>
+export default BrowseBookspage;
