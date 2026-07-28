@@ -8,15 +8,13 @@ import { authClient } from '@/lib/auth-client';
 const navLinks = [
     { name: 'Home', href: '/' },
     { name: 'Browse Ebooks', href: '/browse' },
-    { name: 'Dashboard', href: '/dashboard' },
 ];
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const pathname = usePathname();
-    if (pathname.startsWith('/dashboard')) return null;
     const { data: session, isPending } = authClient.useSession();
-
+     if (pathname.startsWith('/dashboard')) return null;
     return (
         <nav className="bg-[#FAF6F0] border-b border-[#E8DFD3] sticky top-0 z-50">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -47,6 +45,17 @@ const Navbar = () => {
                                 </Link>
                             );
                         })}
+                        {session?.user && (
+                            <Link
+                                href={`/dashboard/${session.user.role}`}
+                                className={`text-md font-medium transition-colors ${pathname.startsWith('/dashboard')
+                                    ? 'text-[#C4622D]'
+                                    : 'text-[#2B2420] hover:text-[#C4622D]'
+                                    }`}
+                            >
+                                Dashboard
+                            </Link>
+                        )}
                     </div>
 
                     {/* Login/Register buttons - desktop */}
@@ -135,11 +144,23 @@ const Navbar = () => {
                                 </Link>
                             );
                         })}
+                        {session?.user && (
+                            <Link
+                                href={`/dashboard/${session.user.role}`}
+                                onClick={() => setIsOpen(false)}
+                                className={`text-sm font-medium ${pathname.startsWith('/dashboard')
+                                        ? 'text-[#C4622D]'
+                                        : 'text-[#2B2420] hover:text-[#C4622D]'
+                                    }`}
+                            >
+                                Dashboard
+                            </Link>
+                        )}
 
                         {isPending ? null : session?.user ? (
                             <>
                                 <span className="text-sm font-medium text-[#2B2420]">
-                                   <p className='font-bold text-md'>hello {session.user.name}!!!</p>
+                                    <p className='font-bold text-md'>hello {session.user.name}!!!</p>
                                 </span>
                                 <button
                                     onClick={async () => {
