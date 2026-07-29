@@ -1,8 +1,8 @@
 import React from 'react';
 import Profile from '@/components/dashboard/user/Profile';
 
-const WriterProfilePage = () => {
+const AdminProfilePage = () => {
     return <Profile />;
 };
 
-export default WriterProfilePage;
+export default AdminProfilePage;

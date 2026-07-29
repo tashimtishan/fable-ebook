@@ -1,11 +1,5 @@
 import React from 'react';
+import Overview from '@/components/admin/Overview';
 
-const AdminDashboardPage = () => {
-    return (
-        <div>
-            Admin Dashboard Overview
-        </div>
-    );
-};
-
+const AdminDashboardPage = () => <Overview />;
 export default AdminDashboardPage;

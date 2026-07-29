@@ -110,3 +110,32 @@ export const updateUserProfile = async (userId, name) => {
         return { success: false, error: error.message };
     }
 };
+
+// Get writer's sales history
+export const getWriterSales = async (writerId) => {
+    try {
+        const res = await fetch(
+            `${SERVER_URL}/writer/sales/${writerId}`,
+            { cache: 'no-store' }
+        );
+        const data = await res.json();
+        return data;
+    } catch (error) {
+        console.error('Error fetching writer sales:', error);
+        return { sales: [], totalSales: 0, totalRevenue: 0 };
+    }
+};
+
+export const updateUserAvatar = async (userId, avatarUrl) => {
+    try {
+        const res = await fetch(`${SERVER_URL}/user/avatar`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ userId, avatarUrl }),
+        });
+        return res.json();
+    } catch (error) {
+        console.error('Error updating avatar:', error);
+        return { success: false, error: error.message };
+    }
+};

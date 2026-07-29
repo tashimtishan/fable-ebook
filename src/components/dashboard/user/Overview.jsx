@@ -101,7 +101,7 @@ const Overview = () => {
                     <HiArrowRight className="text-[#C4622D] group-hover:translate-x-1 transition-transform" />
                 </Link>
                 <Link
-                    href="/dashboard/user/purchase-history"
+                    href="/dashboard/user/purchases"
                     className="flex items-center justify-between p-4 bg-white border border-[#E8DFD3] rounded-xl hover:border-[#C4622D] transition-colors group"
                 >
                     <span className="font-medium text-[#2B2420]">📋 Purchase History</span>

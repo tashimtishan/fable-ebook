@@ -1,11 +1,8 @@
 import React from 'react';
+import SalesHistory from '@/components/writer/SalesHistory';
 
-const WritersSalespage = () => {
-    return (
-        <div>
-           <h2>Writers sales history</h2> 
-        </div>
-    );
+const SalesPage = () => {
+    return <SalesHistory />;
 };
 
-export default WritersSalespage;
+export default SalesPage;

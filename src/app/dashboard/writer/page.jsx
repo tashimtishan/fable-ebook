@@ -1,11 +1,8 @@
 import React from 'react';
+import Overview from '@/components/writer/Overview';
 
 const WriterDashboardPage = () => {
-    return (
-        <div>
-            Writer Dashboard Overview
-        </div>
-    );
+    return <Overview />;
 };
 
 export default WriterDashboardPage;

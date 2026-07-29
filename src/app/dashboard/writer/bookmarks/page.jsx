@@ -1,11 +1,8 @@
 import React from 'react';
+import Bookmarks from '@/components/dashboard/user/Bookmarks';
 
-const WritersBookMarkspage = () => {
-    return (
-        <div>
-            <h2>writers books mark page</h2>
-        </div>
-    );
+const WriterBookmarksPage = () => {
+    return <Bookmarks />;
 };
 
-export default WritersBookMarkspage;
+export default WriterBookmarksPage;

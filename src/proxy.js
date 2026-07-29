@@ -7,8 +7,17 @@ export async function proxy(request) {
         headers: await headers(),
     });
 
+    const url = new URL(request.url);
+    const pathname = url.pathname;
+
     if (!session) {
         return NextResponse.redirect(new URL('/Login', request.url));
+    }
+
+    if (pathname.startsWith('/dashboard/admin')) {
+        if (session.user.role !== 'admin') {
+            return NextResponse.redirect(new URL('/', request.url));
+        }
     }
 
     if (session.user.role === 'writer' && !session.user.isVerifiedWriter) {

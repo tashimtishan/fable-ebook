@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { authClient } from '@/lib/auth-client';
+import { FcGoogle } from 'react-icons/fc';
 
 const RegisterPage = () => {
     const router = useRouter();
@@ -47,6 +48,12 @@ const RegisterPage = () => {
         router.push('/choose-role');
     };
 
+    const handleGoogleSignUp = async () => {
+        const data = await authClient.signIn.social({
+            provider: "google",
+        });
+    };
+
     return (
         <div className="min-h-screen flex items-center justify-center bg-[#FAF6F0] px-4">
             <div className="w-full max-w-md bg-white border border-[#E8DFD3] rounded-xl shadow-sm p-8">
@@ -61,6 +68,25 @@ const RegisterPage = () => {
                         {error}
                     </div>
                 )}
+
+                {/* Google Sign-Up Button */}
+                <button
+                    type="button"
+                    onClick={handleGoogleSignUp}
+                    className="w-full flex items-center justify-center gap-3 py-2.5 rounded-md border border-[#E8DFD3] bg-white text-[#2B2420] text-sm font-medium hover:bg-[#FAF6F0] hover:border-[#C4622D] transition-colors mb-4"
+                >
+                    <FcGoogle size={20} />
+                    Sign up with Google
+                </button>
+
+                <div className="relative mb-4">
+                    <div className="absolute inset-0 flex items-center">
+                        <div className="w-full border-t border-[#E8DFD3]" />
+                    </div>
+                    <div className="relative flex justify-center text-xs">
+                        <span className="px-2 bg-white text-[#6B5F55]">OR</span>
+                    </div>
+                </div>
 
                 <form onSubmit={handleSubmit} className="flex flex-col gap-4">
                     <div>
