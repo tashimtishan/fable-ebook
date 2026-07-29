@@ -18,7 +18,7 @@ const EbookDetails = ({ ebookId }) => {
     const [isBookmarked, setIsBookmarked] = useState(false);
     const [bookmarkLoading, setBookmarkLoading] = useState(false);
 
-    // Single useEffect to handle all data fetching
+   
     useEffect(() => {
         let isMounted = true;
 
@@ -68,8 +68,7 @@ const EbookDetails = ({ ebookId }) => {
             isMounted = false;
         };
     }, [ebookId, session?.user?.id]);
-    // Check if user bookmarked this ebook
-    // Check if user bookmarked this ebook
+   
     useEffect(() => {
         let isMounted = true;
 
@@ -114,7 +113,7 @@ const EbookDetails = ({ ebookId }) => {
             setBookmarkLoading(false);
         }
     };
-    // Show loading state
+   
     if (loading) {
         return (
             <div className="max-w-5xl mx-auto px-4 py-16 text-[#6B5F55]">
@@ -134,7 +133,7 @@ const EbookDetails = ({ ebookId }) => {
     const isOwner = session?.user?.id === ebook.writerId;
     const isPurchased = hasPurchased || isOwner;
 
-    // Determine what content to show
+   
     const showFullContent = isPurchased;
     const displayDescription = showFullContent
         ? ebook.description
@@ -142,14 +141,14 @@ const EbookDetails = ({ ebookId }) => {
 
     return (
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-10 grid grid-cols-1 md:grid-cols-3 gap-10">
-            {/* Cover Image */}
+          
             <img
                 src={ebook.coverImage}
                 alt={ebook.title}
                 className="w-full h-96 object-cover rounded-xl border border-[#E8DFD3]"
             />
 
-            {/* Details */}
+          
             <div className="md:col-span-2">
                 <span className="inline-block px-2 py-0.5 rounded-full text-xs font-medium bg-[#F3DCC9] text-[#C4622D]">
                     {ebook.genre}
@@ -177,7 +176,7 @@ const EbookDetails = ({ ebookId }) => {
                     )}
                 </div>
 
-                {/* Buy Button */}
+               
                 <div className="flex items-center gap-3 mt-6">
                     <form action="/api/payment" method="POST">
                         <input type="hidden" defaultValue={ebook.price} name="price" />
@@ -210,7 +209,7 @@ const EbookDetails = ({ ebookId }) => {
                     </button>
                 </div>
 
-                {/* Content */}
+              
                 <div className="mt-8">
                     <h2 className="text-sm font-semibold text-[#2B2420] mb-2">
                         {showFullContent ? 'Full Content' : 'Preview'}
@@ -228,7 +227,7 @@ const EbookDetails = ({ ebookId }) => {
                         )}
                     </div>
 
-                    {/* Show "Full Content Available" badge if purchased */}
+                   
                     {showFullContent && (
                         <div className="mt-4 p-3 bg-[#F3DCC9] rounded-md border border-[#C4622D]">
                             <p className="text-sm text-[#2B2420] font-medium">
