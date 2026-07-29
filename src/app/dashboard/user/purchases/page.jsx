@@ -1,11 +1,8 @@
 import React from 'react';
+import PurchaseHistory from '@/components/dashboard/user/PurchaseHistory';
 
-const UserpurchasesPage = () => {
-    return (
-        <div>
-            <h2>Users purchases page</h2>
-        </div>
-    );
+const PurchaseHistoryPage = () => {
+    return <PurchaseHistory />;
 };
 
-export default UserpurchasesPage;
+export default PurchaseHistoryPage;

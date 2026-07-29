@@ -1,11 +1,8 @@
 import React from 'react';
+import AddEbook from '@/components/writer/add-ebook';
 
 const AddEbooksPage = () => {
-    return (
-        <div>
-            <p>add ebooks</p>
-        </div>
-    );
+    return <AddEbook />;
 };
 
 export default AddEbooksPage;

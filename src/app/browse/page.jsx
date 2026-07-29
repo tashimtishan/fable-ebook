@@ -1,11 +1,8 @@
 import React from 'react';
+import BrowseEbooks from '@/components/browse/BrowseEbooks';
 
-const BrowseBookspage = () => {
-    return (
-        <div>
-            <h2>Browse books page</h2>
-        </div>
-    );
+const BrowsePage = () => {
+    return <BrowseEbooks />;
 };
 
-export default BrowseBookspage;
+export default BrowsePage;

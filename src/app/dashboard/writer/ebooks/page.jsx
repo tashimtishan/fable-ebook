@@ -1,11 +1,7 @@
 import React from 'react';
-
+import ManageEbooks from '@/components/writer/manage-ebooks';
 const Manageebookspage = () => {
-    return (
-        <div>
-            <h2>manage ebooks</h2>
-        </div>
-    );
+    return <ManageEbooks />;
 };
 
-export default Manageebookspage;<h2>manage ebooks</h2>
+export default Manageebookspage;

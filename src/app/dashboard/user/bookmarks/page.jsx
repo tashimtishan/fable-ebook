@@ -1,11 +1,8 @@
 import React from 'react';
+import Bookmarks from '@/components/dashboard/user/Bookmarks';
 
-const UserBooksMarkPage = () => {
-    return (
-        <div>
-          <h2>users book mark page</h2>  
-        </div>
-    );
+const BookmarksPage = () => {
+    return <Bookmarks />;
 };
 
-export default UserBooksMarkPage;
+export default BookmarksPage;

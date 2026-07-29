@@ -1,11 +1,8 @@
 import React from 'react';
+import Library from '@/components/dashboard/user/Library';
 
-const UserlibraryPage = () => {
-    return (
-        <div>
-            <h2>user library page</h2>
-        </div>
-    );
+const PurchasesPage = () => {
+    return <Library />;
 };
 
-export default UserlibraryPage;
+export default PurchasesPage;

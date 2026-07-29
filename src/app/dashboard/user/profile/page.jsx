@@ -1,11 +1,8 @@
 import React from 'react';
+import Profile from '@/components/dashboard/user/Profile';
 
-const Userprofilepage = () => {
-    return (
-        <div>
-           <h2>user profile page</h2> 
-        </div>
-    );
+const ProfilePage = () => {
+    return <Profile />;
 };
 
-export default Userprofilepage;
+export default ProfilePage;
