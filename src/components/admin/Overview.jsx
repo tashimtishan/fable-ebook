@@ -1,23 +1,29 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import { authClient } from '@/lib/auth-client';
-import { getAdminStats } from '@/lib/actions/admin';
 import { HiUsers, HiUserGroup, HiBookOpen, HiCurrencyDollar } from 'react-icons/hi';
+import { getAdminStats, getAdminAnalytics } from '@/lib/actions/admin';
+import MonthlySalesChart from './charts/MonthlySalesChart';
+import GenrePieChart from './charts/GenrePieChart';
 
 const Overview = () => {
     const { data: session } = authClient.useSession();
     const [stats, setStats] = useState({});
+    const [analytics, setAnalytics] = useState({ monthlySales: [], genreDistribution: [] });
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const fetch = async () => {
-            const data = await getAdminStats();
-            setStats(data);
+            const [statsData, analyticsData] = await Promise.all([
+                getAdminStats(),
+                getAdminAnalytics(),
+            ]);
+            setStats(statsData);
+            setAnalytics(analyticsData);
             setLoading(false);
         };
         fetch();
     }, []);
-
     if (loading) {
         return (
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
@@ -55,6 +61,10 @@ const Overview = () => {
                         </div>
                     </div>
                 ))}
+            </div>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mt-6">
+                <MonthlySalesChart data={analytics.monthlySales} />
+                <GenrePieChart data={analytics.genreDistribution} />
             </div>
         </div>
     );

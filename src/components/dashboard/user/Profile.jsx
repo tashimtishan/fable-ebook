@@ -12,7 +12,7 @@ const Profile = () => {
     const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState({ text: '', type: '' });
 
-    // Update name when session changes
+    
     useEffect(() => {
         if (session?.user?.name && name !== session.user.name) {
             setName(session.user.name);
