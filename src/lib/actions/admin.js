@@ -53,3 +53,8 @@ export const getAdminTransactions = async () => {
     const res = await fetch(`${SERVER_URL}/admin/transactions`, { cache: 'no-store' });
     return res.json();
 };
+
+export const getAdminAnalytics = async () => {
+    const res = await fetch(`${SERVER_URL}/admin/analytics`, { cache: 'no-store' });
+    return res.json();
+};
