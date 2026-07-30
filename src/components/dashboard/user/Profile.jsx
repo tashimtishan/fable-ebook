@@ -75,7 +75,6 @@ const Profile = () => {
             <div className="bg-white border border-[#E8DFD3] rounded-xl overflow-hidden max-w-2xl">
                 <div className="bg-[#F3DCC9] p-6 border-b border-[#E8DFD3]">
                     <div className="flex items-center gap-4">
-                        {/* Avatar with upload button */}
                         <div className="relative">
                             <div className="w-16 h-16 rounded-full bg-[#C4622D] flex items-center justify-center text-white text-2xl font-bold overflow-hidden">
                                 {user.avatar ? (

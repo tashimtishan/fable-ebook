@@ -58,7 +58,6 @@ const PurchaseHistory = () => {
             </p>
 
             <div className="bg-white border border-[#E8DFD3] rounded-xl overflow-hidden">
-                {/* Table Header - Desktop */}
                 <div className="hidden md:grid grid-cols-12 gap-4 p-4 bg-[#F3DCC9] border-b border-[#E8DFD3] text-sm font-semibold text-[#2B2420]">
                     <div className="col-span-4">Ebook Title</div>
                     <div className="col-span-3">Writer</div>
@@ -67,14 +66,13 @@ const PurchaseHistory = () => {
                     <div className="col-span-1 text-center">Action</div>
                 </div>
 
-                {/* Table Body */}
+             
                 <div className="divide-y divide-[#E8DFD3]">
                     {purchases.map((item) => (
                         <div
                             key={item._id}
                             className="grid grid-cols-1 md:grid-cols-12 gap-2 md:gap-4 p-4 hover:bg-[#FAF6F0] transition-colors"
                         >
-                            {/* Mobile view */}
                             <div className="md:hidden">
                                 <p className="font-semibold text-[#2B2420]">{item.ebook?.title || 'Unknown'}</p>
                                 <p className="text-sm text-[#6B5F55]">by {item.ebook?.writerName || 'Unknown'}</p>
@@ -92,7 +90,6 @@ const PurchaseHistory = () => {
                                 </Link>
                             </div>
 
-                            {/* Desktop view */}
                             <div className="hidden md:block md:col-span-4 text-[#2B2420] truncate">
                                 {item.ebook?.title || 'Unknown'}
                             </div>
