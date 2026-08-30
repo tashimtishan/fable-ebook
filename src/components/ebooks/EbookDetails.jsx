@@ -18,7 +18,7 @@ const EbookDetails = ({ ebookId }) => {
     const [isBookmarked, setIsBookmarked] = useState(false);
     const [bookmarkLoading, setBookmarkLoading] = useState(false);
 
-   
+
     useEffect(() => {
         let isMounted = true;
 
@@ -68,7 +68,7 @@ const EbookDetails = ({ ebookId }) => {
             isMounted = false;
         };
     }, [ebookId, session?.user?.id]);
-   
+
     useEffect(() => {
         let isMounted = true;
 
@@ -113,7 +113,7 @@ const EbookDetails = ({ ebookId }) => {
             setBookmarkLoading(false);
         }
     };
-   
+
     if (loading) {
         return (
             <div className="max-w-5xl mx-auto px-4 py-16 text-[#6B5F55]">
@@ -133,7 +133,7 @@ const EbookDetails = ({ ebookId }) => {
     const isOwner = session?.user?.id === ebook.writerId;
     const isPurchased = hasPurchased || isOwner;
 
-   
+
     const showFullContent = isPurchased;
     const displayDescription = showFullContent
         ? ebook.description
@@ -141,14 +141,14 @@ const EbookDetails = ({ ebookId }) => {
 
     return (
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-10 grid grid-cols-1 md:grid-cols-3 gap-10">
-          
+
             <img
                 src={ebook.coverImage}
                 alt={ebook.title}
                 className="w-full h-96 object-cover rounded-xl border border-[#E8DFD3]"
             />
 
-          
+
             <div className="md:col-span-2">
                 <span className="inline-block px-2 py-0.5 rounded-full text-xs font-medium bg-[#F3DCC9] text-[#C4622D]">
                     {ebook.genre}
@@ -160,6 +160,10 @@ const EbookDetails = ({ ebookId }) => {
                 <p className="text-sm text-[#6B5F55] mt-1">
                     by {ebook.writerName}
                 </p>
+
+                <div style={{ background: 'yellow', padding: '10px', margin: '10px 0' }}>
+                    DEBUG — hasPurchased: {String(hasPurchased)} | isOwner: {String(isOwner)}
+                </div>
 
                 <div className="flex items-center gap-4 mt-4">
                     <span className="text-2xl font-bold text-[#2B2420]">
@@ -176,7 +180,7 @@ const EbookDetails = ({ ebookId }) => {
                     )}
                 </div>
 
-               
+
                 <div className="flex items-center gap-3 mt-6">
                     <form action="/api/payment" method="POST">
                         <input type="hidden" defaultValue={ebook.price} name="price" />
@@ -209,7 +213,7 @@ const EbookDetails = ({ ebookId }) => {
                     </button>
                 </div>
 
-              
+
                 <div className="mt-8">
                     <h2 className="text-sm font-semibold text-[#2B2420] mb-2">
                         {showFullContent ? 'Full Content' : 'Preview'}
@@ -227,7 +231,7 @@ const EbookDetails = ({ ebookId }) => {
                         )}
                     </div>
 
-                   
+
                     {showFullContent && (
                         <div className="mt-4 p-3 bg-[#F3DCC9] rounded-md border border-[#C4622D]">
                             <p className="text-sm text-[#2B2420] font-medium">

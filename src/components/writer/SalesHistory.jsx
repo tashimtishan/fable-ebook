@@ -8,6 +8,7 @@ import Link from 'next/link';
 const SalesHistory = () => {
     const { data: session } = authClient.useSession();
     const [sales, setSales] = useState([]);
+    const [totalRevenue, setTotalRevenue] = useState(0);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -15,6 +16,7 @@ const SalesHistory = () => {
             if (session?.user?.id) {
                 const data = await getWriterSales(session.user.id);
                 setSales(data.sales || []);
+                setTotalRevenue(data.totalRevenue || 0);
                 setLoading(false);
             }
         };
@@ -50,9 +52,17 @@ const SalesHistory = () => {
     return (
         <div>
             <h1 className="text-2xl font-bold text-[#2B2420] mb-6">Sales History</h1>
-            <p className="text-[#6B5F55] mb-6">
-                {sales.length} sale{sales.length > 1 ? 's' : ''} total
-            </p>
+
+            <div className="grid grid-cols-2 gap-4 mb-6 max-w-md">
+                <div className="bg-white border border-[#E8DFD3] rounded-xl p-4">
+                    <p className="text-xs text-[#6B5F55]">Total Sales</p>
+                    <p className="text-2xl font-bold text-[#2B2420] mt-1">{sales.length}</p>
+                </div>
+                <div className="bg-white border border-[#E8DFD3] rounded-xl p-4">
+                    <p className="text-xs text-[#6B5F55]">Total Revenue</p>
+                    <p className="text-2xl font-bold text-[#C4622D] mt-1">${totalRevenue.toFixed(2)}</p>
+                </div>
+            </div>
 
             <div className="bg-white border border-[#E8DFD3] rounded-xl overflow-hidden">
                 <div className="hidden md:grid grid-cols-12 gap-4 p-4 bg-[#F3DCC9] border-b border-[#E8DFD3] text-sm font-semibold text-[#2B2420]">

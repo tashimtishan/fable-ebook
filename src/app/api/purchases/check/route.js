@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import { MongoClient, ObjectId } from 'mongodb';
 
 const uri = process.env.MONGODB_URI;
-const client = new MongoClient(uri);
+
 
 export async function GET(req) {
     const { searchParams } = new URL(req.url);
@@ -15,6 +15,7 @@ export async function GET(req) {
             { status: 400 }
         );
     }
+    const client = new MongoClient(uri);
 
     try {
         await client.connect();

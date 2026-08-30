@@ -27,6 +27,7 @@ const Transactions = () => {
                             <th className="p-3 text-sm font-semibold">Type</th>
                             <th className="p-3 text-sm font-semibold">User</th>
                             <th className="p-3 text-sm font-semibold">Amount</th>
+                            <th className="p-3 text-sm font-semibold">Status</th>
                             <th className="p-3 text-sm font-semibold">Date</th>
                         </tr>
                     </thead>
@@ -36,6 +37,11 @@ const Transactions = () => {
                                 <td className="p-3 capitalize">{t.type}</td>
                                 <td className="p-3">{t.userEmail || t.userId}</td>
                                 <td className="p-3">${t.amount}</td>
+                                <td className="p-3">
+                                    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium bg-[#6B8F71]/10 text-[#6B8F71]">
+                                        ✓ Completed
+                                    </span>
+                                </td>
                                 <td className="p-3">{new Date(t.date).toLocaleDateString()}</td>
                             </tr>
                         ))}

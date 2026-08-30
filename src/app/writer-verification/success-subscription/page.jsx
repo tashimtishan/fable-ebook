@@ -19,7 +19,8 @@ export default async function Success({ searchParams }) {
 
   const {
     status,
-    customer_details: { email: customerEmail }
+    customer_details: { email: customerEmail },
+    amount_total
   } = await stripe.checkout.sessions.retrieve(session_id, {
     expand: ['line_items', 'payment_intent']
   });
@@ -29,7 +30,7 @@ export default async function Success({ searchParams }) {
   }
 
   if (status === 'complete') {
-   const result=  await subscription({user, session_id})
+   const result=  await subscription({ user, session_id, customerEmail, amount: amount_total / 100 })
    console.log(result)
     return (
       <section id="success" className="min-h-screen flex items-center justify-center bg-[#FAF6F0] px-4">

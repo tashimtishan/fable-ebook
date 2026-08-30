@@ -1,7 +1,7 @@
 'use server';
 
 const SERVER_URL = process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:5000';
-const APP_URL = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
+const APP_URL = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
 
 // ✅ Existing subscription function (writer verification)
 export const subscription = async (data) => {
